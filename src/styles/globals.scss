@@ -1,0 +1,26 @@
+@use 'main' as *;
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    background-color: var(--surface1);
+    color: var(--default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+nextjs-portal {
+    display: none;
+}
