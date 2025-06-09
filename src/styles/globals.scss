@@ -12,10 +12,10 @@ html {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-circle-rounded);
     font-size: $base-font-size;
     line-height: $base-line-height;
-    background-color: var(--surface1);
+    background-color: var(--surface-1);
     color: var(--default);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

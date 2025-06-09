@@ -1,0 +1,14 @@
+@use '../abstracts/mixins' as *;
+
+
+.heading {
+    font-weight: 700;
+
+    @include font(60, 32);
+}
+
+.start-button {
+    font-weight: 400;
+
+    @include font(42, 32);
+}

@@ -1,0 +1,34 @@
+{
+    "welcomePage": {
+        "title": "Психодиагностика ребенка с&nbsp;помощью ИИ",
+        "startButton": {
+            "isStartButton": true,
+            "text": "Начать тест"
+        }
+    },
+    "step1": {
+        "navButton": {
+            "text": "Далее"
+        }
+    },
+    "step2": {
+        "navButtons": [
+            {
+                "text": "К загрузке рисунков"
+            },
+            {
+                "text": "Узнать результаты"
+            }
+        ]
+    },
+    "step3": {
+        "shareButtons": [
+            {
+                "text": "Скачать отчет PDF"
+            },
+            {
+                "text": "Поделиться результатами"
+            }
+        ]
+    }
+}

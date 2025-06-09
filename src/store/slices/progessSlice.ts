@@ -1,3 +1,4 @@
+import { totalSteps } from '@/lib/steps';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ProgressState {
@@ -15,13 +16,16 @@ const progressSlice = createSlice({
     initialState,
     reducers: {
         nextStep(state) {
-            state.currentStep += 1;
+            if (state.currentStep < totalSteps)
+                state.currentStep++;
         },
         prevStep(state) {
-            state.currentStep = Math.max(0, state.currentStep - 1);
+            if (state.currentStep > 1)
+                state.currentStep--;
         },
         setStep: (state, action: PayloadAction<number>) => {
-            state.currentStep = action.payload;
+            if (action.payload >= 1 && action.payload <= totalSteps)
+                state.currentStep = action.payload;
         },
         setTaskId: (state, action: PayloadAction<string>) => {
             state.taskId = action.payload;

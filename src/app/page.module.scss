@@ -1,0 +1,31 @@
+.root {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../public/images/welcome-bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &Content {
+        position: relative;
+        top: 15%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        row-gap: 3em;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    &Title {
+        color: var(--blue-110);
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.25);
+    }
+
+    &Button {
+        align-self: center;
+    }
+}

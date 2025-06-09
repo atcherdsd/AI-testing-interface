@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use 'variables' as *;
+@use 'functions' as *;
+
+@mixin hover($include-focus-visible: true) {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+
+    @if $include-focus-visible {
+        &:focus-visible {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-up($name) {
+    @media (min-width: #{map.get($breakpoints, $name) + 1}px ) {
+        @content;
+    }
+}
+
+@mixin font($desktop, $mobile: null, $property: 'font-size') {
+    @if $mobile == null {
+        $mobile: $desktop;
+    }
+
+    & {
+        #{$property}: rem($mobile);
+    }
+
+    @include media-breakpoint-up(md) {
+        #{$property}: rem($desktop);
+    }
+}

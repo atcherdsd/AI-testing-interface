@@ -1,0 +1,92 @@
+@use '../../../../styles/members' as *;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.root {
+    --bg-color-light: var(--blue-050);
+    --bg-color-light-hover: var(--blue-070);
+    --bg-color-dark: var(--blue-100);
+    --bg-color-dark-hover: var(--blue-110);
+    --bg-color-disabled: var(--disabled-btn);
+
+    --color-light: var(--surface-1);
+    --color-dark: var(--default);
+    --color-disabled: var(--disabled);
+
+    $root: &;
+    position: relative;
+    @include flex-center;
+    column-gap: 8px;
+    width: 100%;
+    padding: 8px 24px;
+    border-radius: 100px;
+    overflow: hidden;
+    color: var(--color-light);
+    background-color: var(--bg-color-dark);
+    transition: background-color $base-transition-time ease-in-out;
+
+    @include media-breakpoint-up(xl) {
+        width: fit-content;
+    }
+
+    &:not(:disabled) {
+        @include hover {
+            & {
+                background-color: var(--bg-color-dark-hover);
+            }
+        }
+    }
+
+    &:disabled {
+        cursor: auto;
+        color: var(--color-disabled);
+        background-color: var(--bg-color-disabled);
+
+        #{$root}Icon {
+            stroke: var(--color-disabled);
+        }
+    }
+
+    &.lightBg,
+    &.load {
+        color: var(--color-dark);
+        background-color: var(--bg-color-light);
+
+        @include hover {
+            background-color: var(--bg-color-light-hover);
+        }
+    }
+
+    &.load {
+        #{$root}Icon {
+            width: 32px;
+            height: 32px;
+
+            @include media-breakpoint-up(xl) {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+
+    &.startButton {
+        border-radius: 16px;
+    }
+
+    &Icon {
+        position: relative;
+        @include flex-center;
+        width: 24px;
+        height: 24px;
+        transition: transform $base-transition-time ease-in-out;
+
+        svg {
+            stroke: var(--color-light);
+            transition: stroke $base-transition-time ease-in-out;
+        }
+    }
+}

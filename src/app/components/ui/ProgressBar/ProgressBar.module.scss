@@ -1,0 +1,14 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    $root: &;
+    position: relative;
+    height: 16px;
+    background-color: var(--blue-060);
+
+    &Filler {
+        height: 100%;
+        background-color: var(--progress-filler);
+        transition: width $long-transition-time;
+    }
+}
