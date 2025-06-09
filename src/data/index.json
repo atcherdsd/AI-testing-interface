@@ -1,6 +1,13 @@
 {
     "welcomePage": {
-        "title": "Психодиагностика ребенка с&nbsp;помощью ИИ",
+        "title": [
+            {
+                "text": "Психодиагностика ребенка"
+            },
+            {
+                "text": "с помощью ИИ"
+            }
+        ],
         "startButton": {
             "isStartButton": true,
             "text": "Начать тест"

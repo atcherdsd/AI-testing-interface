@@ -75,6 +75,13 @@
 
     &.startButton {
         border-radius: 16px;
+        background-color: var(--blue-110);
+
+        @include hover {
+            & {
+                background-color: var(--bg-color-dark);
+            }
+        }
     }
 
     &Icon {
