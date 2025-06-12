@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export interface ComponentType {
     readonly children?: React.ReactNode;
 }
@@ -29,6 +31,7 @@ export interface ButtonConfig {
     isLightBg?: boolean;
     disabled?: boolean;
     isStartButton?: boolean;
+    style?: CSSProperties;
     clickHandler?: () => void;
 }
 

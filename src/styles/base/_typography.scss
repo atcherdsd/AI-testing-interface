@@ -12,3 +12,38 @@
 
     @include font(42, 32);
 }
+
+.title-3-20 {
+    font-weight: 700;
+    line-height: 106%;
+
+    @include font(20);
+}
+
+.regular-16 {
+    font-weight: 400;
+    line-height: 135%;
+
+    @include font(16);
+}
+
+.regular-14 {
+    font-weight: 400;
+    line-height: 140%;
+
+    @include font(14);
+}
+
+.regular-12 {
+    font-weight: 400;
+    line-height: 135%;
+
+    @include font(12);
+}
+
+.bold-14 {
+    font-weight: 700;
+    line-height: 135%;
+
+    @include font(14);
+}

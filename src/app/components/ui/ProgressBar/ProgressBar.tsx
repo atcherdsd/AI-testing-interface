@@ -8,7 +8,7 @@ import css from './ProgressBar.module.scss';
 export default function ProgressBar() {
     const currentStep = useSelector((state: RootState) => state.progress.currentStep);
 
-    const progressPercent = Math.round((currentStep / totalSteps) * 100);
+    const progressPercent = Number((currentStep / totalSteps * 100).toFixed(2));
 
     return (
         <div className={css.root}>

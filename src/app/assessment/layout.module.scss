@@ -1,3 +1,47 @@
+@use '../../styles/members' as *;
+
 .root {
     position: relative;
+    height: 100vh;
+    backdrop-filter: brightness(0.8);
+    padding: 0 42px;
+
+    @include media-breakpoint-up(md) {
+        padding: 0;
+    }
+
+    &Wrapper {
+        max-width: fit-content;
+        margin: 0 auto;
+        background-color: var(--surface-1);
+        border-radius: 20px;
+        overflow: hidden;
+        padding-bottom: 16px;
+
+        @include media-breakpoint-up(md) {
+            padding-bottom: 24px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            padding-bottom: 32px;
+        }
+    }
+
+
+    &Container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        padding: 24px 16px 0;
+
+        @include media-breakpoint-up(md) {
+            row-gap: 48px;
+            padding: 32px 24px 0;
+        }
+
+        @include media-breakpoint-up(xl) {
+            row-gap: 64px;
+            padding: 48px 64px 0;
+        }
+    }
 }

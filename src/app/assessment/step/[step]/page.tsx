@@ -31,9 +31,5 @@ export default function StepPage() {
         return <p>Шаг не найден</p>
     }
 
-    return (
-        <section>
-            <StepComponent />
-        </section>
-    )
+    return <StepComponent />
 }

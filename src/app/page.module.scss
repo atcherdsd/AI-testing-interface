@@ -4,14 +4,6 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../public/images/welcome-bg-xs.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    @include media-breakpoint-up(md) {
-        background-image: url('../../public/images/welcome-bg-md.webp');
-    }
 
     &Content {
         position: relative;
@@ -29,6 +21,9 @@
     &Title {
         color: var(--blue-110);
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.25);
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
     }
 
     &TitleLine {

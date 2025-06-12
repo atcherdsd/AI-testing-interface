@@ -21,17 +21,13 @@
     position: relative;
     @include flex-center;
     column-gap: 8px;
-    width: 100%;
+    width: fit-content;
     padding: 8px 24px;
     border-radius: 100px;
     overflow: hidden;
     color: var(--color-light);
     background-color: var(--bg-color-dark);
     transition: background-color $base-transition-time ease-in-out;
-
-    @include media-breakpoint-up(xl) {
-        width: fit-content;
-    }
 
     &:not(:disabled) {
         @include hover {
@@ -47,13 +43,14 @@
         background-color: var(--bg-color-disabled);
 
         #{$root}Icon {
-            stroke: var(--color-disabled);
+            svg {
+                stroke: var(--color-disabled);
+            }
         }
     }
 
     &.lightBg,
     &.load {
-        color: var(--color-dark);
         background-color: var(--bg-color-light);
 
         @include hover {
@@ -61,7 +58,14 @@
         }
     }
 
+    &.lightBg {
+        color: var(--color-dark);
+    }
+
     &.load {
+        border-radius: 8px;
+        padding: 0;
+
         #{$root}Icon {
             width: 32px;
             height: 32px;
@@ -69,6 +73,17 @@
             @include media-breakpoint-up(xl) {
                 width: 64px;
                 height: 64px;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+                stroke: none;
+
+                @include media-breakpoint-up(xl) {
+                    width: 36px;
+                    height: 36px;
+                }
             }
         }
     }

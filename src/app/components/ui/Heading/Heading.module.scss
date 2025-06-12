@@ -1,0 +1,12 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    $root: &;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    &Notice {
+        margin-top: 8px;
+    }
+}

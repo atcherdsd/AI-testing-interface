@@ -1,0 +1,50 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    $root: &;
+
+    &ImageSlot {
+        position: relative;
+        display: block;
+        height: 64px;
+        background-color: var(--surface-3);
+        border-radius: 8px;
+
+        @include hover {
+            cursor: pointer;
+
+            #{$root}Button {
+                background-color: var(--blue-070);
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            width: 168px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: 216px;
+            height: 161px;
+        }
+    }
+
+    &Button {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &Preview {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+    }
+
+    &Capture {
+        margin-top: 8px;
+        text-align: center;
+    }
+}

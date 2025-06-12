@@ -12,6 +12,7 @@ html {
 }
 
 body {
+    position: relative;
     font-family: var(--font-circle-rounded);
     font-size: $base-font-size;
     line-height: $base-line-height;

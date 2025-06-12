@@ -1,14 +1,11 @@
-import dynamic from 'next/dynamic';
-import { steps } from './steps';
-import React from 'react';
+import Step1 from '@/app/components/steps/Step1/Step1';
+import Step2 from '@/app/components/steps/Step2/Step2';
+import Step3 from '@/app/components/steps/Step3/Step3';
 
-export type StepId = (typeof steps)[number]['id'];
+export const stepComponents = {
+  1: Step1,
+  2: Step2,
+  3: Step3,
+} as const;
 
-const createDynamicStepComponent = (id: StepId) =>
-    dynamic(() => import(`@/app/components/steps/Step${id}/Step${id}`), {
-        loading: () => React.createElement('p', null, `Загрузка шага ${id}...`),
-    });
-
-export const stepComponents: Record<StepId, ReturnType<typeof dynamic>> = Object.fromEntries(
-    steps.map(({ id }) => [id, createDynamicStepComponent(id)])
-) as Record<StepId, ReturnType<typeof dynamic>>;
+export type StepId = keyof typeof stepComponents;

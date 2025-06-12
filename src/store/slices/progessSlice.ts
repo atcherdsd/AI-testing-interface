@@ -3,12 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ProgressState {
     currentStep: number;
-    taskId: string | null;
 }
 
 const initialState: ProgressState = {
     currentStep: 0,
-    taskId: null,
 };
 
 const progressSlice = createSlice({
@@ -27,11 +25,8 @@ const progressSlice = createSlice({
             if (action.payload >= 1 && action.payload <= totalSteps)
                 state.currentStep = action.payload;
         },
-        setTaskId: (state, action: PayloadAction<string>) => {
-            state.taskId = action.payload;
-        },
     },
 });
 
-export const { nextStep, prevStep, setStep, setTaskId } = progressSlice.actions;
+export const { nextStep, prevStep, setStep } = progressSlice.actions;
 export default progressSlice.reducer;

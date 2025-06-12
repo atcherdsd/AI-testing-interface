@@ -20,6 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             disabled,
             clickHandler,
             isStartButton,
+            style,
             children,
         }: ButtonProps,
         ref,
@@ -32,9 +33,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             isStartButton && css.startButton
         );
 
-        const textClassList = clsx('buttons', css.rootText);
+        const textClassList = clsx(!isStartButton && 'regular-16', css.rootText);
 
-        const buttonProps = { submit, cName, disabled, isStartButton, clickHandler };
+        const buttonProps = { submit, cName, disabled, isStartButton, style, clickHandler };
 
         const innerContent = (
             <>
