@@ -1,11 +1,13 @@
-import { BaseUI, ButtonConfig, IconFirstButtons, TextFirstButtons } from '@/lib/interfaces';
+import { ButtonConfig, IconFirstButtons, TextFirstButtons } from '@/lib/interfaces';
 import css from './Button.module.scss';
 import Link from 'next/link';
-import { forwardRef, memo } from 'react';
+import { ButtonHTMLAttributes, forwardRef, memo } from 'react';
 import ButtonClient from '../ButtonClient/ButtonClient';
 import clsx from 'clsx';
 
-export interface ButtonProps extends BaseUI, ButtonConfig {}
+export interface ButtonProps extends ButtonConfig, ButtonHTMLAttributes<HTMLButtonElement> {
+    className?: string;
+}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     (
@@ -17,11 +19,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             isLightBg,
             className,
-            disabled,
             clickHandler,
             isStartButton,
-            style,
+            ifFullWidth,
             children,
+            ...restProps
         }: ButtonProps,
         ref,
     ) => {
@@ -30,12 +32,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant && css[variant],
             className,
             isLightBg && css.lightBg,
-            isStartButton && css.startButton
+            isStartButton && css.startButton,
+            ifFullWidth && css.fullWidth
         );
 
         const textClassList = clsx(!isStartButton && 'regular-16', css.rootText);
 
-        const buttonProps = { submit, cName, disabled, isStartButton, style, clickHandler };
+        const buttonProps = { submit, cName, isStartButton, clickHandler, ...restProps };
 
         const innerContent = (
             <>

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import 'react-datepicker/dist/react-datepicker.css';
+import '../styles/datepicker-overrides.scss';
 import '../styles/globals.scss';
 import ru from '@/locales/ru/meta.json';
 import { Providers } from '@/store/providers';
 import { circleRounded } from './assets/fonts';
+
 import css from './layout.module.scss';
 
 export const metadata: Metadata = {

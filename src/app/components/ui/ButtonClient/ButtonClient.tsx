@@ -1,18 +1,16 @@
 'use client';
 
-import { BaseUI } from '@/lib/interfaces';
 import { nextStep } from '@/store/slices/progessSlice';
 import { AppDispatch } from '@/store/store';
 import { useRouter } from 'next/navigation';
-import { CSSProperties } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { useDispatch } from 'react-redux';
 
-export interface ButtonClientProps extends BaseUI {
+export interface ButtonClientProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    className?: string;
     cName: string;
     submit?: boolean;
-    disabled?: boolean;
     isStartButton?: boolean;
-    style?: CSSProperties;
     clickHandler?: () => void;
 };
 
@@ -24,6 +22,7 @@ export default function ButtonClient({
     clickHandler,
     style,
     children,
+    ...restProps
 }: ButtonClientProps) {
     const dispatch = useDispatch<AppDispatch>();
 
@@ -44,6 +43,7 @@ export default function ButtonClient({
             type={submit ? 'submit' : 'button'}
             disabled={disabled}
             onClick={handleClick}
+            {...restProps}
         >
             {children}
         </button>

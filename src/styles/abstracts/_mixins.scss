@@ -23,7 +23,7 @@
 }
 
 @mixin media-breakpoint-down($name) {
-    @media (max-width: #{map-get($breakpoints, $name) - 1}px) {
+    @media (max-width: #{map.get($breakpoints, $name) - 1}px) {
         @content;
     }
 }

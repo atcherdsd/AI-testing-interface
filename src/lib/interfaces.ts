@@ -1,5 +1,3 @@
-import { CSSProperties } from "react";
-
 export interface ComponentType {
     readonly children?: React.ReactNode;
 }
@@ -29,9 +27,48 @@ export interface ButtonConfig {
     isBlank?: boolean;
     submit?: boolean;
     isLightBg?: boolean;
-    disabled?: boolean;
     isStartButton?: boolean;
-    style?: CSSProperties;
+    ifFullWidth?: boolean;
     clickHandler?: () => void;
 }
 
+export interface LabelType {
+    label: string;
+}
+
+export enum IconType {
+    ThumbsUp = 'thumbsUp',
+    Flag = 'flag',
+}
+
+export interface MultiSectionFormData {
+    asFormTitle: string;
+    commonInfoSection: {
+        childInfoTitle: string;
+        childName: LabelType;
+        birthDate: LabelType & {
+            placeholder: string;
+            minDate: string;
+        };
+        gender: LabelType & {
+            options: string[];
+        };
+        parentName: LabelType;
+    };
+    rulesSection: {
+        rulesTitle: string;
+        rules: {
+            iconType: IconType;
+            text: string;
+        }[];
+    };
+    radioSections: {
+        title: string;
+        questions: string[];
+    }[];
+    commonQuestions: {
+        title: string;
+        radioQuestion: string;
+        freeQuestions: (string | { text: string; isSmallArea: boolean; })[];
+    };
+}

@@ -59,18 +59,20 @@ export default function LoadingBlock({ index, capture, errorMessage, className }
 
     return (
         <div className={rootClassName}>
-            <label
-                className={css.rootImageSlot}
-                aria-label={url ? "Загрузить изображение заново" : "Загрузить изображение"}
-            >
-                <input
-                    ref={inputRef}
-                    type='file'
-                    accept='.jpg,.jpeg,.png,.pdf'
-                    onChange={onFileChange}
-                    hidden
-                    aria-label={`Загрузить файл для ${capture.toLowerCase()}`}
-                />
+            <div className={css.rootImageSlotWrapper}>
+                <label
+                    className={css.rootImageSlot}
+                    aria-label={url ? "Загрузить изображение заново" : "Загрузить изображение"}
+                >
+                    <input
+                        ref={inputRef}
+                        type='file'
+                        accept='.jpg,.jpeg,.png,.pdf'
+                        onChange={onFileChange}
+                        hidden
+                        aria-label={`Загрузить файл для ${capture.toLowerCase()}`}
+                    />
+                </label>
 
                 {!url ? (
                     <Button
@@ -97,7 +99,7 @@ export default function LoadingBlock({ index, capture, errorMessage, className }
                         </Button>
                     </>
                 )}
-            </label>
+            </div>
             <p className={`regular-16 ${css.rootCapture}`}>{capture}</p>
 
             {modalMessage && <Modal message={modalMessage} onClose={closeModal} />}

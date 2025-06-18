@@ -18,6 +18,9 @@ import SendIcon from '@/icons/Send.svg';
 import { clearError, selectAllUploaded, uploadImages } from '@/store/slices/imagesSlice';
 import { useImagesContext } from '@/app/assessment/context/ImagesContext';
 import Modal from '../../ui/Modal/Modal';
+import clsx from 'clsx';
+import { selectSurveyFormValid } from '@/store/slices/formStateSlice';
+import { resetSurveyState, selectSurveyError, selectSurveyStatus, submitSurvey } from '@/store/slices/surveySlice';
 
 export type StepNavigatorProps = BaseUI;
 
@@ -36,6 +39,10 @@ export default function StepNavigator({}: StepNavigatorProps) {
     const status = useSelector((state: RootState) => state.images.status);
     const allUploaded = useSelector(selectAllUploaded);
     const { filesRef } = useImagesContext();
+
+    const isValid = useSelector(selectSurveyFormValid);
+    const surveyStatus = useSelector(selectSurveyStatus);
+    const surveyError = useSelector(selectSurveyError);
 
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
@@ -60,13 +67,24 @@ export default function StepNavigator({}: StepNavigatorProps) {
                 dispatch(nextStep());
                 router.push(`/assessment/step/${currentStep + 1}`);
             } catch (e) {
+                console.error('Ошибка отправки:', e);
                 const errorMessage = e instanceof Error ? e.message : 'Неизвестная ошибка при загрузке файлов';
                 setModalMessage(`Ошибка загрузки файлов: ${errorMessage}`);
             }
 
-        } else {
-            dispatch(nextStep());
-            router.push(`/assessment/step/${currentStep + 1}`);
+        } else if (currentStep === 2) {
+            try {
+                // очистка прошлго статуса
+                dispatch(resetSurveyState());
+                await dispatch(submitSurvey()).unwrap();
+
+                dispatch(nextStep());
+                router.push(`/assessment/step/${currentStep + 1}`);
+            } catch (e) {
+                console.error('Ошибка отправки:', e);
+                const errorMessage = e instanceof Error ? e.message : 'Неизвестная ошибка отправки анкеты';
+                setModalMessage(`Ошибка отправки анкеты: ${errorMessage}`);
+            }
         }
     };
 
@@ -80,8 +98,14 @@ export default function StepNavigator({}: StepNavigatorProps) {
         setModalMessage(null);
     };
 
+    const rootCName = clsx(
+        css.root,
+        mounted ? css.visible : css.hidden,
+        currentStep === 2 && css.columnMobile
+    );
+
     return (
-        <div className={`${css.root} ${mounted ? css.visible : css.hidden}`}>
+        <div className={rootCName}>
             <p className={`bold-14 ${css.rootCurrentStep}`}>Шаг {currentStep}/{totalSteps}</p>
 
             {currentStep === 1 && (
@@ -97,14 +121,21 @@ export default function StepNavigator({}: StepNavigatorProps) {
                 </Button>
             )}
 
-            {(currentStep > 1) && (currentStep < totalSteps) && (
-                <div>
-                    <Button clickHandler={handlePrev} variant='iconFirst' {...navButtons[0]} >
+            {currentStep === 2 && (
+                <div className={css.rootButtonsContainer}>
+                    <Button clickHandler={handlePrev} variant='iconFirst' ifFullWidth {...navButtons[0]} >
                         <ArrowLeftIcon />
                     </Button>
-                    <Button clickHandler={handleNext} variant='textFirst' {...navButtons[1]}>
+                    <Button
+                        disabled={!isValid || surveyStatus === 'loading'}
+                        clickHandler={handleNext}
+                        variant='textFirst'
+                        ifFullWidth
+                        {...navButtons[1]}
+                    >
                         <ForwardRightIcon />
                     </Button>
+                    {surveyError && <p className="error-text">{surveyError}</p>}
                 </div>
             )}
 

@@ -1,0 +1,29 @@
+@use '../../../../styles/members' as *;
+
+.root {
+
+    &DateLabel {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    &DatePicker {
+        max-width: 90px;
+        border: 1px solid var(--muted);
+        border-radius: 6px;
+        padding: 9px 11px;
+        color: var(--disabled);
+        transition: color $base-transition-time;
+
+        &:focus,
+        &:active,
+        &.valid {
+            color: var(--default);
+            border-color: var(--violet-110);
+        }
+
+        &.error {
+            border-color: var(--red-110);
+        }
+    }
+}

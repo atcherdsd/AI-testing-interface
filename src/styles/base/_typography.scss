@@ -41,6 +41,14 @@
     @include font(12);
 }
 
+.bold-18 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 125%;
+
+    @include font(18);
+}
+
 .bold-14 {
     font-weight: 700;
     line-height: 135%;

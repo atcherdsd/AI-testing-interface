@@ -109,7 +109,7 @@ const imagesSlice = createSlice({
 });
 
 export const selectAllUploaded = (state: RootState) =>
-  state.images.urls.every((url) => url !== null);
+    state.images.urls.every((url) => url !== null);
 
 export const { setImage, resetImage, resetAll, clearError } = imagesSlice.actions;
 export default imagesSlice.reducer;

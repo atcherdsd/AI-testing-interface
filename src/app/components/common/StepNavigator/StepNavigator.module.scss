@@ -9,8 +9,41 @@
     min-height: 40px;
     transition: opacity 0.3s ease, transform 0.3s ease;
 
+    &.columnMobile {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: space-between;
+        row-gap: 24px;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        #{$root}ButtonsContainer {
+            flex-direction: column-reverse;
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+            }
+        }
+    }
+
     &CurrentStep {
         color: var(--muted);
+        flex-shrink: 0;
+    }
+
+    &ButtonsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 8px;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
     }
 }
 

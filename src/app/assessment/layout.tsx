@@ -7,14 +7,16 @@ export default function AssessmentLayout({ children }: { children: React.ReactNo
     return (
         <div className={css.root}>
             <div className={css.rootWrapper}>
-                <ProgressBar />
+                <header>
+                    <ProgressBar />
+                </header>
 
                 <ImagesProvider>
-                    <div className={css.rootContainer}>
+                    <main className={css.rootMain}>
                         {children}
 
                         <StepNavigator />
-                    </div>
+                    </main>
                 </ImagesProvider>
             </div>
         </div>

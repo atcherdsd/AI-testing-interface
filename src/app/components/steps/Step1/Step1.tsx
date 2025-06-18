@@ -10,9 +10,10 @@ export default function Step1() {
 
     return (
         <section className={css.root}>
-            <Heading {...stepData.heading} />
+            <Heading id='upload-title' {...stepData.heading} />
+            <p className='visually-hidden'>{stepData.descriptionWhere}</p>
 
-            <form className={css.rootLoadingContainer}>
+            <form className={css.rootLoadingContainer} aria-labelledby='upload-title'>
                 {loadingBlocks.map((block, i) => (
                     <LoadingBlock
                         className={css.rootLoadingBlock}
