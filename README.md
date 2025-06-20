@@ -1,4 +1,8 @@
 AI Assessment Interface
+---
+---
+
+Deploy: https://ai-assessment-interface.netlify.app/
 
 Интерфейс для многошагового опросника с загрузкой изображений и генерацией психологического отчёта.
 Реализован на Next.js 15 (App Router), React, Redux Toolkit, React Hook Form + Zod, react-datepicker, date-fns. Поддерживает «боевой» режим работы с бекендом и «демо/мок» режим при недоступности сервера. Деплоится на Netlify.
