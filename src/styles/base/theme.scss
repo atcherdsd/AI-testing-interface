@@ -1,0 +1,22 @@
+@use 'colors' as *;
+
+:root {
+  --surface-1: var(--white);
+  --default: var(--black);
+  --surface-3: var(--gray-1);
+  --surface-5: var(--gray-2);
+  --muted: var(--gray-3);
+  --disabled: var(--gray-4-050);
+  --disabled-btn: var(--gray-4-010);
+  --soft: var(--gray-5);
+  --blue-110: var(--blue-1);
+  --blue-100: var(--blue-2);
+  --blue-070: var(--blue-3);
+  --blue-060: var(--blue-4);
+  --blue-050: var(--blue-5);
+  --progress-filler: var(--blue-6);
+  --red-110: var(--red-1);
+  --red-050: var(--red-2);
+  --violet-110: var(--violet-1);
+  --violet-100: var(--violet-2);
+}

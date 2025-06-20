@@ -1,0 +1,45 @@
+@use '../../styles/members' as *;
+
+.root {
+    min-height: 100vh;
+    height: 100%;
+    backdrop-filter: brightness(0.8);
+    padding: 0 42px;
+
+    @include media-breakpoint-up(md) {
+        padding: 20px 0;
+    }
+
+    &Wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: var(--surface-1);
+        border-radius: 20px;
+        overflow: hidden;
+
+        @include media-breakpoint-up(md) {
+            max-width: 600px;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: 904px;
+        }
+    }
+
+
+    &Main {
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        padding: 24px 16px 16px;
+
+        @include media-breakpoint-up(md) {
+            row-gap: 48px;
+            padding: 32px 24px 24px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            row-gap: 64px;
+            padding: 48px 64px 32px;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@use './members' as *;
+
+.react-datepicker {
+    $root: &;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0px 32px 32px 0px #4352700d, 0px 0px 32px 0px #4453711a;
+    font-family: var(--font-circle-rounded);
+    top: -6px;
+
+    &__header {
+        background-color: var(--surface-1);
+        border-bottom: none;
+        padding: 12px 14px 0;
+    }
+
+    &__header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        margin-bottom: 12px;
+    }
+
+    &__navigation#{$root}__navigation--previous,
+    &__navigation#{$root}__navigation--next {
+        height: 36px;
+        width: 36px;
+    }
+
+    &__navigation#{$root}__navigation--previous {
+        top: 12px;
+        left: 12px;
+
+        svg {
+            stroke: var(--default);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.5;
+        }
+    }
+
+    &__navigation#{$root}__navigation--next {
+        top: 12px;
+        right: 12px;
+    }
+
+    &__current-month {
+        display: flex;
+        align-items: center;
+        height: 36px;
+    }
+
+    &__current-month-name {
+        align-self: flex-start;
+        text-transform: capitalize;
+        color: var(--default);
+    }
+
+    &__current-month-year {
+        align-self: center;
+        color: var(--soft);
+    }
+
+    &__current-month-name,
+    &__current-month-year {
+        padding: 5px 8px;
+    }
+
+    &__day-names {
+        margin: 0;
+        padding-top: 12px;
+
+        .react-datepicker__day-name {
+            width: 2.25rem;
+            padding: 0 11px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 135%;
+        }
+    }
+
+    &__month {
+        margin: 0 14px 12px;
+
+        .react-datepicker__day {
+            width: 2.25rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            margin: 0;
+            color: var(--default);
+            font-size: 14px;
+
+            &:not([aria-disabled=true]):hover {
+                border-radius: 6px;
+            }
+
+            &.react-datepicker__day--selected {
+                background-color: var(--violet-100);
+                color: var(--surface-1);
+            }
+        }
+
+        .react-datepicker__day--disabled {
+            color: var(--surface-5);
+        }
+
+        .react-datepicker__day--keyboard-selected {
+            border-radius: 6px;
+            background-color: var(--violet-100);
+            color: var(--surface-1);
+        }
+
+        .react-datepicker__day--outside-month {
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+}

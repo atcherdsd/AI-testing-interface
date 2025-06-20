@@ -1,0 +1,32 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    @include media-breakpoint-up(md) {
+        row-gap: 32px;
+    }
+
+    &LoadingContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            gap: 24px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            gap: 64px;
+        }
+    }
+
+    &LoadingBlock {
+        @include media-breakpoint-range(md, xl) {
+            flex: 0 0 168px;
+        }
+    }
+}

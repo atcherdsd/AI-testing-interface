@@ -1,0 +1,96 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include media-breakpoint-up(md) {
+        row-gap: 48px;
+    }
+
+    @include media-breakpoint-up(xl) {
+        row-gap: 64px;
+    }
+
+    &CommonQuestionsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 16px;
+        margin-top: 24px;
+        min-height: 296px;
+    }
+
+    &Rules {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 16px;
+        background-color: var(--red-050);
+        border-radius: 8px;
+        padding: 16px;
+        min-height: 176px;
+
+        @include media-breakpoint-up(md) {
+            padding: 24px;
+        }
+    }
+
+    &RuleWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            gap: 16px;
+        }
+    }
+
+    &RuleIcon {
+        width: 32px;
+        height: 32px;
+    }
+
+    &SpecialQuestions {
+        display: flex;
+        flex-direction: column;
+        row-gap: 64px;
+
+        @include media-breakpoint-up(md) {
+            row-gap: 48px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            row-gap: 64px;
+        }
+    }
+
+    &RadioSection:not(:first-child) &RadioSectionTitle {
+        margin-bottom: 32px;
+    }
+
+    &RadioSection:first-child &RadioSectionTitle {
+        margin-bottom: 24px;
+    }
+
+    &SpecialQuestionsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        row-gap: 32px;
+        min-height: 296px;
+    }
+
+    &CommonQuestions {
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        padding-bottom: 16px;
+
+        @include media-breakpoint-up(md) {
+            padding-bottom: 0;
+        }
+    }
+}

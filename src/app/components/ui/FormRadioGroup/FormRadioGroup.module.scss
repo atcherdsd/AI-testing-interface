@@ -1,0 +1,91 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    &RadioContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin-top: 8px;
+
+        &.columnMobile,
+        &.columnTablet {
+            flex-direction: column;
+        }
+
+        &.columnMobile {
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+            }
+        }
+
+        &.columnTablet {
+            @include media-breakpoint-up(xl) {
+                flex-direction: row;
+            }
+        }
+    }
+
+    &Label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &LabelText {
+        margin-left: 4px;
+    }
+
+    &InputContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+    }
+
+    &Input {
+        appearance: none;
+        background-color: var(--surface-5);
+        display: grid;
+        place-content: center;
+        flex-shrink: 0;
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color $base-transition-time;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            transform: scale(0);
+            background-color: var(--white);
+            transition: transform $base-transition-time, border-color $base-transition-time;
+        }
+
+        &:hover {
+            background-color: var(--blue-100);
+        }
+
+        &:checked {
+            background-color: var(--blue-100);
+            border-color: var(--blue-100);
+
+            &::before {
+                transform: scale(1);
+            }
+        }
+
+        &:checked:hover {
+            background-color: var(--blue-110);
+            border-color: var(--blue-110);
+        }
+
+        &:focus-visible, &:focus {
+            border-color: var(--blue-100);
+        }
+    }
+}

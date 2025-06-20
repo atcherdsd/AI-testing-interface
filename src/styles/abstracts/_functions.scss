@@ -1,0 +1,7 @@
+@function unit($size, $root-font-size: 16) {
+    @return calc($size / $root-font-size);
+}
+
+@function rem($size, $root-font-size: 16) {
+    @return unit($size, $root-font-size) * 1rem;
+}

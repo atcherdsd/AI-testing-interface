@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use 'variables' as *;
+@use 'functions' as *;
+
+@mixin hover($include-focus-visible: true) {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+
+    @if $include-focus-visible {
+        &:focus-visible {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-up($name) {
+    @media (min-width: #{map.get($breakpoints, $name)}px ) {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-down($name) {
+    @media (max-width: #{map.get($breakpoints, $name) - 1}px) {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-range($from, $to) {
+    @include media-breakpoint-up($from) {
+        @include media-breakpoint-down($to) {
+            @content;
+        }
+    }
+}
+
+@mixin font($desktop, $mobile: null, $property: 'font-size') {
+    @if $mobile == null {
+        $mobile: $desktop;
+    }
+
+    & {
+        #{$property}: rem($mobile);
+    }
+
+    @include media-breakpoint-up(md) {
+        #{$property}: rem($desktop);
+    }
+}

@@ -1,0 +1,47 @@
+@use '../../../../styles/members' as *;
+
+.root {
+    $root: &;
+
+    &Label {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+    }
+
+    &Input,
+    &Textarea {
+        border: 1px solid var(--muted);
+        border-radius: 6px;
+        padding: 9px 11px;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.valid {
+            border-color: var(--violet-110);
+        }
+
+        &.error {
+            border-color: var(--red-110);
+        }
+    }
+
+    &Input {
+        transition: border-color $base-transition-time;
+    }
+
+    &Textarea {
+        box-sizing: border-box;
+        resize: none;
+        height: 96px;
+        overflow: hidden;
+        transition:
+            border-color $base-transition-time,
+            height $base-transition-time ease-in-out;
+
+        &.smallArea {
+            height: 80px;
+        }
+    }
+}

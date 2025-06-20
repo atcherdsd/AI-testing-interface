@@ -1,0 +1,17 @@
+@use '../styles/members' as *;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../public/images/welcome-bg-xs.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include media-breakpoint-up(md) {
+        background-image: url('../../public/images/welcome-bg-md.webp');
+    }
+}
