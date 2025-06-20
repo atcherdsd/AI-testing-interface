@@ -6,13 +6,13 @@ import { format } from 'date-fns';
 import { ru } from 'date-fns/locale/ru';
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import ArrowLeftIcon from '@/icons/Arrow-left.svg';
 import ArrowRightIcon from '@/icons/Arrow-right.svg';
 import css from './DateInput.module.scss';
 import { updateField } from '@/store/slices/formStateSlice';
 import { FormSchema } from '@/lib/schemas/questionsFormSchema';
 import { isValidDate, parseAndValidateDateString } from '@/lib/utils/helpers';
+import { useAppDispatch } from '@/store/hooks';
 
 interface DateInputProps {
     control: Control<FormSchema>;
@@ -29,7 +29,7 @@ export default function DateInput({
     placeholder,
     minDate,
 }: DateInputProps) {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { field, fieldState } = useController({ name, control });
     const { trigger } = useFormContext<FormSchema>();
 

@@ -10,11 +10,11 @@ import { MultiSectionFormData } from '@/lib/interfaces';
 import ThumbsUpIcon from '@/icons/thumbs-up.svg';
 import FlagIcon from '@/icons/flag.svg';
 import Heading from '../../ui/Heading/Heading';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { resetSurveyFormData, setSurveyFormData, setSurveyFormValid, updateField } from '@/store/slices/formStateSlice';
 import DateInput from '../../ui/DateInput.tsx/DateInput';
 import clsx from 'clsx';
+import { useAppDispatch } from '@/store/hooks';
 
 type MultiSectionFormProps = MultiSectionFormData;
 
@@ -25,7 +25,7 @@ export default function MultiSectionForm({
     radioSections,
     commonQuestions
 }: MultiSectionFormProps) {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const methods = useForm<FormSchema>({
         resolver: zodResolver(formSchema),
@@ -172,7 +172,8 @@ export default function MultiSectionForm({
                                         | 'section2'
                                         | 'section3'
                                         | 'section4';
-                                    const questionKey = `q${i + 1}` as 'q1' | 'q2' | 'q3' | 'q4';
+                                    const questionKey
+                                        = `q${i + 1}` as 'q1' | 'q2' | 'q3' | 'q4' | 'q5' | 'q6' | 'q7' | 'q8' | 'q9'  | 'q10';
                                     const fieldName = `${sectionKey}.${questionKey}` as Path<FormSchema>;
 
                                     return (
@@ -207,11 +208,11 @@ export default function MultiSectionForm({
                             label={commonQuestions.radioQuestion}
                             name='section5.radio'
                             options={[
-                                { value: '5', label: 'Отличное' },
-                                { value: '4', label: 'Хорошее' },
-                                { value: '3', label: 'Удовлетворительное' },
-                                { value: '2', label: 'Неудовлетворительное' },
-                                { value: '1', label: 'Очень плохое' },
+                                { value: 'Отличное', label: 'Отличное' },
+                                { value: 'Хорошее', label: 'Хорошее' },
+                                { value: 'Удовлетворительное', label: 'Удовлетворительное' },
+                                { value: 'Неудовлетворительное', label: 'Неудовлетворительное' },
+                                { value: 'Очень плохое', label: 'Очень плохое' },
                             ]}
                             isInColumnOnMobile={false}
                             isInColumnOnTablet

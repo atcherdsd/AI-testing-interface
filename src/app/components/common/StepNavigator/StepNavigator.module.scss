@@ -29,6 +29,29 @@
         }
     }
 
+    &.columnTablet {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 24px;
+
+        @include media-breakpoint-up(md) {
+            gap: 8px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        #{$root}ButtonsContainer > * {
+            width: 100%;
+
+            @include media-breakpoint-up(xl) {
+                width: fit-content;
+            }
+        }
+    }
+
     &CurrentStep {
         color: var(--muted);
         flex-shrink: 0;

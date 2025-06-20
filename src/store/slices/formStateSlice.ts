@@ -57,7 +57,7 @@ export const {
     setSurveyFormValid
 } = formStateSlice.actions;
 
-export const selectSurveyFormData = (state: RootState) => state.formState.formData;
-export const selectSurveyFormValid = (state: RootState) => state.formState.isValid;
+export const selectSurveyFormData = (state: RootState): Partial<FormSchema> => state.formState.formData;
+export const selectSurveyFormValid = (state: RootState): boolean => state.formState.isValid;
 
 export default formStateSlice.reducer;

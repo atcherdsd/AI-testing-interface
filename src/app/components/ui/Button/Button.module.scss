@@ -57,6 +57,12 @@
         }
     }
 
+    &.paddingLarge {
+        @include media-breakpoint-up(xl) {
+            padding: 8px 50px;
+        }
+    }
+
     &.lightBg,
     &.load {
         background-color: var(--bg-color-light);
@@ -68,7 +74,11 @@
 
     &.lightBg {
         color: var(--color-dark);
-        padding: 8px 44px;
+        padding: 8px 24px;
+
+        @include media-breakpoint-up(md) {
+            padding: 8px 44px;
+        }
 
         #{$root}Icon {
             svg {

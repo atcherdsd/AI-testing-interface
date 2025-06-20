@@ -6,6 +6,7 @@ import ButtonClient from '../ButtonClient/ButtonClient';
 import clsx from 'clsx';
 
 export interface ButtonProps extends ButtonConfig, ButtonHTMLAttributes<HTMLButtonElement> {
+    download?: boolean;
     className?: string;
 }
 
@@ -15,9 +16,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             text,
             href,
             isBlank,
+            download,
             submit,
             variant,
             isLightBg,
+            isPaddingLarge,
             className,
             clickHandler,
             isStartButton,
@@ -32,6 +35,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant && css[variant],
             className,
             isLightBg && css.lightBg,
+            isPaddingLarge && css.paddingLarge,
             isStartButton && css.startButton,
             ifFullWidth && css.fullWidth
         );
@@ -52,15 +56,26 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             </>
         );
 
-        return href ? (
-            <Link href={href} target={isBlank ? '_blank' : '_self'} className={cName} onClick={clickHandler}>
-                {innerContent}
-            </Link>
-        ) : (
-            <ButtonClient {...buttonProps}>
-                {innerContent}
-            </ButtonClient>
-        );
+        if (href) {
+            if (download) {
+                return (
+                    <a href={href} download className={cName} onClick={clickHandler}>
+                        {innerContent}
+                    </a>
+                );
+            }
+            return (
+                <Link href={href} target={isBlank ? '_blank' : '_self'} className={cName} onClick={clickHandler}>
+                    {innerContent}
+                </Link>
+            );
+        } else {
+            return (
+                <ButtonClient {...buttonProps}>
+                    {innerContent}
+                </ButtonClient>
+            );
+        }
     },
 );
 

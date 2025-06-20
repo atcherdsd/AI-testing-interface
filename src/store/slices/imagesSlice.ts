@@ -6,6 +6,7 @@ interface ImagesState {
     taskId?: string;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error?: string;
+    isDemo?: boolean;
 }
 
 const initialState: ImagesState = {
@@ -28,7 +29,7 @@ export const uploadImages = createAsyncThunk<
     async (files, { rejectWithValue }) => {
         try {
             const formData = new FormData();
-            files.forEach((file) => formData.append('file', file));
+            files.forEach((file) => formData.append('files', file));
 
             const url = process.env.NEXT_PUBLIC_API_URL!;
 
@@ -87,9 +88,13 @@ const imagesSlice = createSlice({
             state.taskId = undefined;
             state.status = 'idle';
             state.error = undefined;
+            state.isDemo = undefined;
         },
-        clearError(state) {
+        clearError: (state) => {
             state.error = undefined;
+        },
+        setIsDemo: (state, action: PayloadAction<boolean>) => {
+            state.isDemo = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -111,5 +116,5 @@ const imagesSlice = createSlice({
 export const selectAllUploaded = (state: RootState) =>
     state.images.urls.every((url) => url !== null);
 
-export const { setImage, resetImage, resetAll, clearError } = imagesSlice.actions;
+export const { setImage, resetImage, resetAll, clearError, setIsDemo } = imagesSlice.actions;
 export default imagesSlice.reducer;

@@ -2,6 +2,7 @@ import ProgressBar from '@/app/components/ui/ProgressBar/ProgressBar';
 import StepNavigator from '../components/common/StepNavigator/StepNavigator';
 import css from './layout.module.scss';
 import { ImagesProvider } from './context/ImagesContext';
+import { ReportContainerRefProvider } from './context/ReportContainerRefContext';
 
 export default function AssessmentLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -12,11 +13,13 @@ export default function AssessmentLayout({ children }: { children: React.ReactNo
                 </header>
 
                 <ImagesProvider>
-                    <main className={css.rootMain}>
-                        {children}
+                    <ReportContainerRefProvider>
+                        <main className={css.rootMain}>
+                            {children}
 
-                        <StepNavigator />
-                    </main>
+                            <StepNavigator />
+                        </main>
+                    </ReportContainerRefProvider>
                 </ImagesProvider>
             </div>
         </div>

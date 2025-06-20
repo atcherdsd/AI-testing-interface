@@ -27,6 +27,7 @@ export interface ButtonConfig {
     isBlank?: boolean;
     submit?: boolean;
     isLightBg?: boolean;
+    isPaddingLarge?: boolean;
     isStartButton?: boolean;
     ifFullWidth?: boolean;
     clickHandler?: () => void;

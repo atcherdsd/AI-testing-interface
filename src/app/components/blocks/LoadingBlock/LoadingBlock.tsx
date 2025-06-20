@@ -6,12 +6,11 @@ import LoadIcon from '@/icons/load.svg';
 import ReloadIcon from '@/icons/reload.svg';
 import Button from '../../ui/Button/Button';
 import { ChangeEvent, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/store/store';
 import { clearError, resetImage, setImage } from '@/store/slices/imagesSlice';
 import Modal from '../../ui/Modal/Modal';
 import { useImagesContext } from '@/app/assessment/context/ImagesContext';
 import clsx from 'clsx';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 const MAX_FILE_SIZE_MB = 5;
 
@@ -22,8 +21,8 @@ interface LoadingBlockProps extends BaseUI {
 }
 
 export default function LoadingBlock({ index, capture, errorMessage, className }: LoadingBlockProps) {
-    const dispatch = useDispatch<AppDispatch>();
-    const url = useSelector((state: RootState) => state.images.urls[index]);
+    const dispatch = useAppDispatch();
+    const url = useAppSelector(state => state.images.urls[index]);
     const { filesRef } = useImagesContext();
 
     const [modalMessage, setModalMessage] = useState<string | null>(null);

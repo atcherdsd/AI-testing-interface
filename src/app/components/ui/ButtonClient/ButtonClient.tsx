@@ -1,10 +1,9 @@
 'use client';
 
+import { useAppDispatch } from '@/store/hooks';
 import { nextStep } from '@/store/slices/progessSlice';
-import { AppDispatch } from '@/store/store';
 import { useRouter } from 'next/navigation';
 import { ButtonHTMLAttributes } from 'react';
-import { useDispatch } from 'react-redux';
 
 export interface ButtonClientProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -24,7 +23,7 @@ export default function ButtonClient({
     children,
     ...restProps
 }: ButtonClientProps) {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
     const router = useRouter();
 

@@ -4,6 +4,7 @@ import imagesReducer from './slices/imagesSlice';
 import modalReducer from './slices/modalSlice';
 import surveyReducer from './slices/surveySlice';
 import formStateReducer from './slices/formStateSlice';
+import reportReducer from './slices/reportSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         images: imagesReducer,
         modal: modalReducer,
         survey: surveyReducer,
-        formState: formStateReducer
+        formState: formStateReducer,
+        report: reportReducer
     },
     devTools: process.env.NODE_ENV !== 'production',
 });
